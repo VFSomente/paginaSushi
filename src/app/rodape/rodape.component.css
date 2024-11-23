@@ -1,0 +1,21 @@
+footer{
+  background-color: black;
+  color: white;
+  height: 25vh;
+  font-family: 'Kaushan Script', sans-serif;
+}
+footer{
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  gap: 30vh;
+}
+h2{
+  padding: 10px;
+}
+a{
+  padding: 10px;
+  text-decoration: none;
+  color: white;
+}
+
