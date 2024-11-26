@@ -1,0 +1,9 @@
+<div class="carrinho">
+  <h2>Carrinho</h2>
+  <div *ngFor="let item of carrinho">
+    <p>{{ item.nome }} - R$ {{ item.preco }} x {{ item.quantidade }}</p>
+    <button (click)="removerItem(item.id)">Remover</button>
+  </div>
+  <hr>
+  <h3>Total: R$ {{ total }}</h3>
+</div>

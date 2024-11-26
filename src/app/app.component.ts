@@ -4,10 +4,11 @@ import { CabecalhoComponent } from "./cabecalho/cabecalho.component";
 import { CorpoComponent } from "./corpo/corpo.component";
 import { RodapeComponent } from "./rodape/rodape.component";
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CabecalhoComponent, CorpoComponent, RodapeComponent],
+  imports: [CabecalhoComponent, CorpoComponent, RodapeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
