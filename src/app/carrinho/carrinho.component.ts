@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { Injectable } from '@angular/core';
 import { CarrinhoService } from '../carrinho-service.service';
 
@@ -28,3 +29,31 @@ export class CarrinhoComponent {
     this.total = this.carrinhoService.getTotal();
   }
 }
+=======
+import { Component } from '@angular/core';
+import { CartService, Product } from '../services/cart.service';
+
+@Component({
+  selector: 'app-carrinho',
+  standalone: true,  // Certifique-se de que o componente é standalone
+  templateUrl: './carrinho.component.html',
+  styleUrls: ['./carrinho.component.css']
+})
+export class CarrinhoComponent {
+  cartItems: Product[] = [];
+  totalPrice: number = 0;
+
+  constructor(private cartService: CartService) {
+    this.cartItems = this.cartService.getCartItems();
+    this.totalPrice = this.cartService.getTotalPrice();
+  }
+
+  clearCart(): void {
+    this.cartService.clearCart();
+    this.cartItems = [];
+    this.totalPrice = 0;
+    alert('Carrinho esvaziado!');
+  }
+}
+
+>>>>>>> Stashed changes

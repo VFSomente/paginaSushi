@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+;
 
 @Component({
   selector: 'app-cabecalho',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './cabecalho.component.css'
 })
 export class CabecalhoComponent {
+  showCart = false;
 
+  toggleCart(): void {
+    this.showCart = !this.showCart;
+  }
 }

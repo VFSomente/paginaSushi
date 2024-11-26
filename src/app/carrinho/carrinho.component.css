@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ul {
   list-style-type: none;
   padding: 0;
@@ -11,4 +12,15 @@ button {
   color: white;
   border: none;
   cursor: pointer;
+=======
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+>>>>>>> Stashed changes
 }

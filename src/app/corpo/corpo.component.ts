@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+<<<<<<< Updated upstream
 import { CarrinhoService, ItemCarrinho } from '../carrinho-service.service';
+=======
+import { CartService, Product } from '../services/cart.service';
+>>>>>>> Stashed changes
 
 @Component({
   selector: 'app-corpo',
@@ -9,6 +13,7 @@ import { CarrinhoService, ItemCarrinho } from '../carrinho-service.service';
   styleUrl: './corpo.component.css'
 })
 export class CorpoComponent {
+<<<<<<< Updated upstream
     carrinho: ItemCarrinho[] = [];
     total: number = 0;
 
@@ -29,3 +34,12 @@ export class CorpoComponent {
     }
   }
 
+=======
+  constructor(private cartService: CartService) {}
+
+  addProductToCart(product: Product): void {
+    this.cartService.addToCart(product);
+    alert(`${product.name} foi adicionado ao carrinho!`);
+  }
+}
+>>>>>>> Stashed changes

@@ -85,3 +85,7 @@ main{
   scale: 1;
 }
 
+main{
+  margin: 0; /* Remove qualquer margem adicional */
+  padding: 0; /* Remove qualquer preenchimento adicional */
+}

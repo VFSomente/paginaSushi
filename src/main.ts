@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import { Component } from '@angular/core';
 
 @Component({
@@ -44,3 +45,13 @@ export class AppComponent {
     return this.carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
   }
 }
+=======
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from './app/app.component';
+import { routes } from './app/app.routes'; // Importa as rotas
+
+bootstrapApplication(AppComponent, {
+  providers: [provideRouter(routes)], // Aqui passamos as rotas para o Angular
+});
+>>>>>>> Stashed changes
