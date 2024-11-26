@@ -1,46 +1,49 @@
 import { Injectable } from '@angular/core';
-
-export interface ItemCarrinho {
-  id: number;
-  nome: string;
-  preco: number;
-  quantidade: number;
-}
+import { ItemCarrinho } from './carrinho/carrinho.component';  // Caminho do item
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarrinhoService {
-  private carrinho: ItemCarrinho[] = [];
-  private total: number = 0;
+  private carrinho: ItemCarrinho[] = [];  // Carrinho armazenado
 
-  adicionarItem(item: ItemCarrinho) {
-    const index = this.carrinho.findIndex(c => c.id === item.id);
-    if (index !== -1) {
-      this.carrinho[index].quantidade += item.quantidade;
-    } else {
-      this.carrinho.push(item);
-    }
-    this.atualizarTotal();
-  }
+  constructor() {}
 
-  removerItem(id: number) {
-    const index = this.carrinho.findIndex(item => item.id === id);
-    if (index !== -1) {
-      this.carrinho.splice(index, 1);
-    }
-    this.atualizarTotal();
-  }
-
-  atualizarTotal() {
-    this.total = this.carrinho.reduce((acc, item) => acc + item.preco * item.quantidade, 0);
-  }
-
-  getCarrinho() {
+  // Obter todos os itens do carrinho
+  getCarrinho(): ItemCarrinho[] {
     return this.carrinho;
   }
 
-  getTotal() {
-    return this.total;
+  // Obter o total do carrinho
+  getTotal(): number {
+    return this.carrinho.reduce((total, item) => total + item.preco * item.quantidade, 0);
+  }
+
+  // Adicionar um item ao carrinho
+  adicionarItem(item: ItemCarrinho): void {
+    const itemExistente = this.carrinho.find((i) => i.id === item.id);
+    if (itemExistente) {
+      itemExistente.quantidade += item.quantidade; // Se o item já existe, apenas aumenta a quantidade
+    } else {
+      this.carrinho.push(item); // Se não existe, adiciona um novo item ao carrinho
+    }
+  }
+
+  // Remover um item do carrinho
+  removerItem(id: number): void {
+    this.carrinho = this.carrinho.filter(item => item.id !== id);  // Filtra o item que será removido
+  }
+
+  // Atualizar a quantidade de um item no carrinho
+  atualizarQuantidade(id: number, quantidade: number): void {
+    const item = this.carrinho.find(i => i.id === id); // Encontra o item pelo ID
+    if (item) {
+      item.quantidade = quantidade; // Atualiza a quantidade do item
+    }
+  }
+
+  // Limpar todo o carrinho
+  limparCarrinho(): void {
+    this.carrinho = [];  // Reseta o carrinho para um array vazio
   }
 }

@@ -1,29 +1,24 @@
-<<<<<<< Updated upstream
-<div class="carrinho">
-  <h2>Carrinho</h2>
-  <div *ngFor="let item of carrinho">
-    <p>{{ item.nome }} - R$ {{ item.preco }} x {{ item.quantidade }}</p>
-    <button (click)="removerItem(item.id)">Remover</button>
-  </div>
-  <hr>
-  <h3>Total: R$ {{ total }}</h3>
-=======
-<div>
-  <h2>Itens no Carrinho</h2>
+<main>
+  <div class="carrinho">
+    <h1>Seu Carrinho</h1>
 
-  <div **ngIf="cartItems.length > 0; else emptyCart">
-    <div **ngFor="let item of items" class="cart-item">
-      <img [src]="item.image" [alt]="item.name" width="50">
-      <p>{{ item.name }}</p>
-      <p>R$ {{item.totalPrice}}</p>
+    <div *ngFor="let item of carrinho" class="item-carrinho">
+      <img [src]="item.Imagem" alt="{{ item.nome }}" class="imagem-item">
+      <div class="detalhes-item">
+        <h2>{{ item.nome }}</h2>
+        <p>R$ {{ item.preco | number:'1.2-2' }}</p>
+        <div>
+          <label for="quantidade">Quantidade:</label>
+          <input type="number" [(ngModel)]="item.quantidade" (change)="atualizarQuantidade(item.id, item.quantidade)" min="1">
+        </div>
+        <button (click)="removerItem(item.id)">Remover</button>
+      </div>
     </div>
 
-    <h3>Total: R$ {{totalPrice}}</h3>
-    <button (click)="clearCart()">Esvaziar Carrinho</button>
+    <div class="total">
+      <h3>Total: R$ {{ total | number:'1.2-2' }}</h3>
+      <button (click)="finalizarCompra()">Finalizar Compra</button>
+      <button (click)="limparCarrinho()">Limpar Carrinho</button>
+    </div>
   </div>
-
-  <ng-template #emptyCart>
-    <p>O carrinho está vazio.</p>
-  </ng-template>
->>>>>>> Stashed changes
-</div>
+</main>
